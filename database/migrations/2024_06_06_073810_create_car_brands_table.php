@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('car_brands', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary()->comment('Уникальный идентификатор');
+            $table->string('name')->comment('Марка авто, например: Audi, BMW, Volvo, ВАЗ');
             $table->timestamps();
         });
     }
