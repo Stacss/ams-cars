@@ -75,6 +75,12 @@ class ImportCarsData extends Command
         return 0;
     }
 
+    /**
+     * Генерирует случайную дату в формате год-месяц-день на основе заданного года.
+     *
+     * @param int $year Год, который будет использован для генерации даты.
+     * @return string Случайно сгенерированная дата в формате "год-месяц-день".
+     */
     private function generateRandomDate($year)
     {
         $month = rand(1, 12);
