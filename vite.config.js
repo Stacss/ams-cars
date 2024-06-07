@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
-import CustomScrollbar from 'custom-vue-scrollbar';
-import { resolve } from 'path';
 
 export default defineConfig({
     server: {
