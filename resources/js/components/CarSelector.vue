@@ -32,8 +32,8 @@
             </div>
             <custom-scrollbar :style="{ width: '271px', height: '416px' }"
                               :wrapperStyle="{'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'space-between'}"
-                              :autoExpand=false :thumbWidth="11" :autoHide=false :contentClass="items">
-                <div v-for="car in filteredCars" :key="car.id" class="car-item">
+                              :autoExpand=false :thumbWidth="11" :autoHide=false>
+                <div v-for="car in filteredCars" :key="car.id" :class="['car-item', { 'active': selectedCar === car.id }]" @click="selectCar(car.id)">
                     <img :src="getImagePath(car.image_url)" :alt="car.name" class="img-item">
                     <p>{{ car.brand.name }} {{ car.name }}</p>
                 </div>
@@ -71,6 +71,7 @@ export default {
             isInputFocused: false,
             selectedIcon: -1,
             hoverIcon: -1,
+            selectedCar: null,
             icons: [
                 {default: 'all-car-blue.svg', active: 'all-car-white.svg'},
                 {default: 'car-blue.svg', active: 'car-white.svg'},
@@ -97,6 +98,9 @@ export default {
             if (!this.isInputFocused) {
                 this.searchIcon = this.searchIconDefault;
             }
+        },
+        selectCar(carId) {
+            this.selectedCar = carId;
         },
         getImagePath(partialPath) {
             return new URL(`../../img/${partialPath}`, import.meta.url).href;
@@ -279,21 +283,23 @@ export default {
     color: transparent;
 }
 
-.items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
 .car-item {
     flex: 1 1 calc(50% - 10px);
     margin: 5px 0;
     text-align: center;
     background: #F1F1F1;
-    padding: 0.72px 5.78px 4.17px 8.67px;
     border-radius: 2.17px;
     box-sizing: border-box;
-    padding-bottom: 5px;
+    //padding-bottom: 5px;
+    padding: 1px 1px 5px 1px;
+    border: 1px solid #F1F1F1;
+}
+.car-item:hover {
+    border-color: #D7D7D7;
+}
+
+.car-item.active {
+    border-color: #47B0D4;
 }
 
 .car-item:nth-child(odd) {
