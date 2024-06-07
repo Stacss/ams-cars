@@ -35,7 +35,7 @@
                               :autoExpand=false :thumbWidth="11" :autoHide=false>
                 <div v-for="car in filteredCars" :key="car.id" :class="['car-item', { 'active': selectedCar === car.id }]" @click="selectCar(car.id)">
                     <img :src="getImagePath(car.image_url)" :alt="car.name" class="img-item">
-                    <p>{{ car.brand.name }} {{ car.name }}</p>
+                    <p>{{ car.brand }} {{ car.model }} {{ car.date_end }}</p>
                 </div>
             </custom-scrollbar>
 
@@ -120,7 +120,7 @@ export default {
         filteredCars() {
             const searchTerm = this.search.toLowerCase();
             let filteredCars = this.cars.filter(car => {
-                return car.name.toLowerCase().includes(searchTerm) || car.brand.name.toLowerCase().includes(searchTerm);
+                return car.model.toLowerCase().includes(searchTerm) || car.brand.toLowerCase().includes(searchTerm);
             });
 
             if (this.selectedIcon === 1) {
@@ -147,7 +147,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('/api/cars')
+        axios.get('/api/cars/1')
             .then(response => {
                 this.cars = response.data;
             })
