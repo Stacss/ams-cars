@@ -9,7 +9,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars = CarModel::all();
+        $cars = CarModel::with('brand')->get();
         return response()->json($cars);
     }
 }
