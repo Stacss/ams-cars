@@ -1,4 +1,4 @@
-Сидео<?php
+<?php
 
 namespace Database\Seeders;
 
