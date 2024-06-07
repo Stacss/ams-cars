@@ -30,28 +30,6 @@ header img {
     background: #E8E8E8;
     padding: 25px 6px;
 }
-
-.row {
-    display: flex;
-}
-
-.left-menu {
-    min-width: 40px;
-    height: 190px;
-    background: #FFFFFF;
-    border-radius: 6px;
-    margin-right: 16px;
-    margin-top: 78px;
-}
-
-.items-box {
-    width:286px;
-    height: 497px;
-    padding: 10px 5px 20px 20px;
-    gap: 15px;
-    border-radius: 15px;
-    background: #FFFFFF;
-}
 .scrollbar__thumb {
     background-color: #33ADD6 !important;
     border-radius: 5px !important;

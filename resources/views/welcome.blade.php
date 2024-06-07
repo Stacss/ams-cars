@@ -16,16 +16,10 @@
     <p>Выберите автомобиль</p>
 </header>
 <div class="container">
-    <div class="row">
-        <div class="left-menu">
+<div id="app">
+    <car-selector></car-selector>
 
-        </div>
-        <div class="items-box">
-            <div id="app">
-                <car-selector></car-selector>
-            </div>
-        </div>
-    </div>
+</div>
 
 </div>
 
