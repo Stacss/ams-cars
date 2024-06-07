@@ -22,14 +22,12 @@
                          alt="Close Icon">
                 </div>
                 <div class="search-container"
-                     @mouseover="searchIcon = searchIconHover"
-                     @mouseout="searchIcon = searchIconDefault"
-                >
+                     @mouseover="handleMouseOver"
+                     @mouseout="handleMouseOut">
                     <img :src="searchIcon" alt="search Icon">
                     <input v-model="search" placeholder="Поиск"
-                           @focus="searchIcon = searchIconFocus"
-                           @blur="searchIcon = searchIconDefault"
-                    >
+                           @focus="handleFocus"
+                           @blur="handleBlur">
                 </div>
             </div>
             <custom-scrollbar :style="{ width: '271px', height: '416px' }"
@@ -82,6 +80,24 @@ export default {
         };
     },
     methods: {
+        handleFocus() {
+            this.isInputFocused = true;
+            this.searchIcon = this.searchIconFocus;
+        },
+        handleBlur() {
+            this.isInputFocused = false;
+            this.searchIcon = this.searchIconDefault;
+        },
+        handleMouseOver() {
+            if (!this.isInputFocused) {
+                this.searchIcon = this.searchIconHover;
+            }
+        },
+        handleMouseOut() {
+            if (!this.isInputFocused) {
+                this.searchIcon = this.searchIconDefault;
+            }
+        },
         getImagePath(partialPath) {
             return new URL(`../../img/${partialPath}`, import.meta.url).href;
         },
