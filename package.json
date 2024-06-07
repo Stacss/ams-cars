@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^5.0.5",
+        "custom-vue-scrollbar": "^0.0.8",
         "vue": "^3.4.27"
     }
 }
